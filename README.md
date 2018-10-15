@@ -7,7 +7,7 @@ MAIN code
     srcrec_main
 
     INPUT    
-    x (mm) : off-axis positions of dose measurements (this work: from -8 mm to 8mm with step 0.2 mm -> 81 points)
+    x (mm) : off-axis positions of dose measurements (see example_sources)
     dose : a 1-d array of a relative dose profile measurements (see example_sources)
     dose_std : a 1-d array of st.dev of relative dose profile measurements (see example_sources)
     
@@ -28,7 +28,7 @@ The code outputs also a figure exhibiting (a) the reconstructed source and a gau
 
 SCRIPTS
 
-    srcrec_errors: reconstructes the source multiple times and provides an estimate of the total ucnertainty,
+    srcrec_errors: reconstructs the source multiple times and provides an estimate of the total ucnertainty,
     RecSource: Reconstructs the source based on input field parameters and system matrix,
     MLEM: the mlem iterative algorithm as applied in one full iteration,
     ExtrSystemMat : extracts the system matrix for the given linac gometry
