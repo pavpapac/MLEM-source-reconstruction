@@ -24,6 +24,6 @@ src_RMSE100_10 : rmse between the rec source and a gaussian fit in the 100 - 10 
 The code outputs also a figure exhibiting (a) the reconstructed source and a gaussian fit, 
 (b) measured and reconstructed profiles and (c) the field opimization cost function. 
 
-A detailed description of the method and validation of the code can be found here: 
+A detailed description of the method and validation of the code can be found in this article (open access): 
 
-
+http://iopscience.iop.org/article/10.1088/0031-9155/61/3/1078/meta
