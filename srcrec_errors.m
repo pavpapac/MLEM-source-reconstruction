@@ -1,7 +1,7 @@
 function [nrec_std,FWHMstd,FWTMstd]=srcrec_errors(field,pro,x,DOSEav,DOSEstd,PSFav,PSFstd,N)
 % FUNCTION SCRREC_ERRORS: Reconstructes the source with uncertainties due
 % to jaw positioning, PSF and dose measurements. The number of iterations 
-% (N) refers to the number of times the reconstructiong is repeated in
+% (N) refers to the number of times the reconstruction is repeated in
 % order to achieve a robust estimate of the total uncertainty. 
 
 

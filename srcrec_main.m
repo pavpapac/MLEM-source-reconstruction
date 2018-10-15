@@ -1,4 +1,4 @@
-function [A,field_opt,snrec,snrec_std,FWHMrec,FWHMstd,FWTMrec,FWTMstd,pro_err90_10,src_RMSE100_10]=srcrec_main(x,dose,dose_std,pro,N)
+function [A,field_opt,snrec,snrec_std,FWHMrec,FWHMstd,FWTMrec,FWTMstd,pro_err90_10,src_RMSE100_10]=srcrec_main(x,dose,dose_std)
 %%%%%%%%%%%%%%%%%%%%%%%%%%% FUNCTION srcrec_main %%%%%%%%%%%%%%%%%%%%%%%
 % This is the main code to run for reconstructing the source. 
 % INPUT: x=off-axis positions (mm), dose = measured dose profile 
@@ -10,7 +10,6 @@ function [A,field_opt,snrec,snrec_std,FWHMrec,FWHMstd,FWTMrec,FWTMstd,pro_err90_
 % rec profile in the 90-10 % region, src_RMSE100_10= rmse between the rec 
 % source and a gaussian fit in the 100 - 10 % region.
 
-tic;
  
 %% INITIALIZATION %%
 
@@ -25,9 +24,20 @@ k50=zeros(1,N,'double');
 err90_10=zeros(1,N,'double');
 FWHM=zeros(1,N,'double');
 
+% Use the lower jaws (crossplane -> 'cro') for all measurements to be consistent in both
+% orientations. However, one may want to switch to inplane ('in') if the upper jaws
+% are used instead. 
+
+pro = 'cro';
+
+% Define the number of reconstructions to be performed for uncertainty
+% estimation. Recommended value N = 30 or larger
+
+Niter=50;
+
 %% LOAD KERNELS %%
 
-load('PSF_6FFF_average','PSFx_av','PSFy_av','PSFx_std','PSFy_std')
+load('PSF','PSFx_av','PSFy_av','PSFx_std','PSFy_av')
 
 if strcmp(pro,'cro')
     psf=PSFx_av;
@@ -102,7 +112,7 @@ snrec=snrec./snrec(round(length(snrec)/2));
 %% Now calculate errors due to jaw re-positioning. Assuming a random variation
 % on jaw position of 0.2 mm (1 sigma) following a normal distribution. 
 
-[snrec_std,FWHMstd,FWTMstd]=srcrec_errors(field_opt,pro,x,dose,dose_std,psf,psf_std,N);
+[snrec_std,FWHMstd,FWTMstd]=srcrec_errors(field_opt,pro,x,dose,dose_std,psf,psf_std,Niter);
 
 %% PLOTS %%
 
