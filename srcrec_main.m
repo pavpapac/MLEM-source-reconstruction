@@ -109,8 +109,8 @@ src_RMSE100_10=sqrt(mean(c(elem10:elem100)))./mean(nrec(elem10:elem100));
 snrec=smooth(nrec,15);
 snrec=snrec./snrec(round(length(snrec)/2));
 
-%% Now calculate errors due to jaw re-positioning. Assuming a random variation
-% on jaw position of 0.2 mm (1 sigma) following a normal distribution. 
+%% Now calculate the total propagated unccertainty
+% due to jaw re-positioning, kernel and experimental uncertainties
 
 [snrec_std,FWHMstd,FWTMstd]=srcrec_errors(field_opt,pro,x,dose,dose_std,psf,psf_std,Niter);
 
