@@ -1,9 +1,8 @@
 function [A,field_opt,snrec,snrec_std,FWHMrec,FWHMstd,FWTMrec,FWTMstd,pro_err90_10,src_RMSE100_10]=srcrec_main(x,dose,dose_std)
 %%%%%%%%%%%%%%%%%%%%%%%%%%% FUNCTION srcrec_main %%%%%%%%%%%%%%%%%%%%%%%
 % This is the main code to run for reconstructing the source. 
-% INPUT: x=off-axis positions (mm), dose = measured dose profile 
-% with Pb foil, pro='cro' or 'in', N: number of reconstructions to estimate
-% uncertainties due to jaw repositioning (set at 30 or more), PSF and film measurements.
+% INPUT: x=off-axis positions (mm), dose = measured dose profile,
+% dose_std: std of dose profile points
 % OUTPUT: field_opt (mm) = optimum field size selected, 
 % FWHMrec (mm) = FWHM of reconstructed source, TWHMrec (mm)=
 % TWHM of rec source, pro_err90_10 = mean absolute error between input and 
@@ -15,6 +14,7 @@ function [A,field_opt,snrec,snrec_std,FWHMrec,FWHMstd,FWTMrec,FWTMstd,pro_err90_
 
 % First initialize the field array. This contains all possible jaw
 % positions to be tested for the 5 mm field (4-6 mm). 
+
 field=4.0:0.1:6.0;
 N=length(field);
 
