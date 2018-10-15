@@ -1,20 +1,19 @@
 # MLEM-source-reconstruction
 
-A code to reconstruct linax X-ray sources based on crossplane and inplane profile measurements in air. 
+A code to reconstruct linac X-ray sources based on photon fluence profile measurements in air. 
 
-The srcrec_main is the main script to run. Other scripts needed with it: 
+The srcrec_main is the main script to run. Dependencies on other scripts: 
 srcrec_errors: reconstructes the source multiple times and provides an estimate of the total ucnertainty,
 RecSource: Reconstructs the source based on input field parameters and system matrix,
-mlem: the mlem iterative algorithm as applied in one full reconstruction,
+MLEM: the mlem iterative algorithm as applied in one full iteration,
 ExtrSystemMat : extracts the system matrix for the given linac gometry
 
-INPUT variables: x (mm): off-axis positions of dose measurements (-8 mm -> 8mm, step 0.2 mm), dose: relative dose profile,
-dose_std: st.dev of relative dose profile measurements, pro: 'cro' or 'in' for crossplane or inplane,
-orientation, N: number of reconstructions to run for total uncertainty estimation (typically N = 30 or higher)
+INPUT variables: x (mm): off-axis positions of dose measurements (examples: -8 mm -> 8mm, step 0.2 mm), dose: relative dose profile,
+dose_std: st.dev of relative dose profile measurements
 
 DATA FILES
-PSF.mat: The PSF kernel needed for the profile deconvolution step (this needs to be in the same directory as the script files)
-example_sources.mat: 3 example sets of crossplane and inplane profile measurements. Can be used as input in srcerec_main
+PSF.mat: The PSF kernel needed for the profile deconvolution step. This needs to be in the same directory as the srcrec_main.
+example_sources.mat: 3 example sets of crossplane and inplane fluence profiles and st. dev. 
 
 OUTPUT: A: System matrix, field_opt (mm) : optimum field size selected, 
 snrec: reconstructed source, snrec_std: st dev of rec source,
