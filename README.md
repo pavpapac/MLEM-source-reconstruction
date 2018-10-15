@@ -26,7 +26,7 @@ MAIN code
 The code outputs also a figure exhibiting (a) the reconstructed source and a gaussian fit, 
 (b) the measured and reconstructed profile and (c) the field opimization cost function.
 
-SCRIPTS
+DEPENDENCIES ON SCRIPTS (NEED TO EXIST IN THE SAME DIRECTORY)
 
     srcrec_errors: reconstructs the source multiple times and provides an estimate of the total ucnertainty,
     RecSource: Reconstructs the source based on input field parameters and system matrix,
@@ -36,7 +36,7 @@ SCRIPTS
 DATA FILES
 
     PSF.mat: The PSF kernel needed for the profile deconvolution step. This needs to be in the same directory as the srcrec_main.
-    example_sources.mat: 3 example sets of crossplane and inplane fluence profiles and st. dev. 
+    example_sources.mat: 3 example sets of crossplane and inplane fluence profile measurements. 
 
 
 The source reconstruction process (summary)
