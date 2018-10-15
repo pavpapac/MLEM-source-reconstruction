@@ -2,15 +2,29 @@
 
 A code to reconstruct linac X-ray sources based on photon fluence profile measurements in air. 
 
-MAIN code: srcrec_main(x,dose,dose_std)
-
-INPUT
+MAIN code
     
+    srcrec_main
+
+    INPUT    
     x (mm) : off-axis positions of dose measurements (this work: from -8 mm to 8mm with step 0.2 mm -> 81 points)
     dose : a 1-d array of a relative dose profile measurements (see example_sources)
     dose_std : a 1-d array of st.dev of relative dose profile measurements (see example_sources)
-
-DEPENDENCIES AND DATA FILES
+    
+    OUTPUT 
+    A: The linac geometry system matrix,
+    field_opt (mm) : the optimum field size selected, 
+    snrec: the reconstructed source fluence profile, 
+    snrec_std: the st dev of reconstructed source fluence profile,
+    FWHMrec (mm) : FWHM of reconstructed source,
+    FWHMstd (mm) : std of FWHM of reconstructed source,
+    TWHMrec (mm) : TWHM of rec source, 
+    TWHMstd (mm) : std of TWHM of rec source, 
+    pro_err90_10 : mean absolute error between input and reconstructed profile in the 90-10 % dose region, 
+    src_RMSE100_10 : rmse between the rec source and a gaussian fit in the 100-10 % fluence region
+    
+The code outputs also a figure exhibiting (a) the reconstructed source and a gaussian fit, 
+(b) the measured and reconstructed profile and (c) the field opimization cost function.
 
 SCRIPTS
 
@@ -24,21 +38,6 @@ DATA FILES
     PSF.mat: The PSF kernel needed for the profile deconvolution step. This needs to be in the same directory as the srcrec_main.
     example_sources.mat: 3 example sets of crossplane and inplane fluence profiles and st. dev. 
 
-OUTPUT 
-
-    A: The linac geometry system matrix,
-    field_opt (mm) : the optimum field size selected, 
-    snrec: the reconstructed source fluence profile, 
-    snrec_std: the st dev of reconstructed source fluence profile,
-    FWHMrec (mm) : FWHM of reconstructed source,
-    FWHMstd (mm) : std of FWHM of reconstructed source,
-    TWHMrec (mm) : TWHM of rec source, 
-    TWHMstd (mm) : std of TWHM of rec source, 
-    pro_err90_10 : mean absolute error between input and reconstructed profile in the 90-10 % dose region, 
-    src_RMSE100_10 : rmse between the rec source and a gaussian fit in the 100-10 % fluence region
-
-The code outputs also a figure exhibiting (a) the reconstructed source and a gaussian fit, 
-(b) the measured and reconstructed profile and (c) the field opimization cost function. 
 
 The source reconstruction process (summary)
 
